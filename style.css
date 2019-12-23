@@ -1,0 +1,601 @@
+@import url("https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff|Source+Sans+Pro:300,400,900&display=swap");
+
+:root {
+  --main-font: "Source Sans Pro", sans-serif;
+  --secondary-font: "Herr Von Muellerhoff", cursive;
+  --body-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --main-font-color-dark: #252525;
+  --secondary-color-font: #c59d5f;
+  --body-font-color: #515151;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--body-font);
+  font-size: 10px;
+  color: var(--body-font-color);
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+section {
+  padding: 4rem 0;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.nav-header {
+  padding: 0.5rem 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, .9),
+    rgba(0, 0, 0, 1)
+  );
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+  width: 32px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-toggle {
+  color: #fff;
+  font-size: 2rem;
+  order: 1;
+  cursor: pointer;
+  z-index: 10000;
+  background: transparent;
+  border: none;
+}
+
+.nav-list {
+  list-style: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100vh;
+  background-color: var(--main-font-color-dark);
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  transform: translate(-100%);
+  transition: transform 0.5s;
+  z-index: 2000;
+}
+
+.nav-list::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: top;
+  transition: opacity 0.5s;
+  transition: scale 2s;
+}
+
+.fa-times.block {
+  display: block;
+}
+
+.fa-times.none {
+  display: none;
+}
+
+.open.nav-list {
+  transform: translateX(0);
+}
+
+.open.nav-list::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-link {
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  transition: color 0.5s;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color-font);
+}
+
+/* Hero */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.9)
+    ),
+    url("img/hero.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.headline__second {
+  font-size: 8rem;
+  font-family: var(--secondary-font);
+  color: var(--secondary-color-font);
+  font-weight: 100;
+  letter-spacing: 2px;
+  line-height: 4rem;
+  opacity: 0;
+  animation: fadeUp 0.5s forwards;
+  animation-delay: 0.8s;
+}
+
+.headline__second::first-letter {
+  font-size: 12rem;
+}
+
+.headline__first {
+  color: #fff;
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.5rem;
+  opacity: 0;
+  animation: scaleDown 0.5s forwards;
+  animation-delay: 0.3s;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  max-width: 9rem;
+  width: 100%;
+  height: 0.25rem;
+  background-color: #fff;
+  position: relative;
+  opacity: 0;
+  animation: grow 0.7s forwards;
+  animation-delay: 1.2s;
+}
+
+.line-left::before,
+.line-right::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0.6rem solid transparent;
+  opacity: 0;
+  animation: grow 0.2s forwards;
+  animation-delay: 1.5s;
+}
+
+.line-right::before {
+  border-right-color: #fff;
+  right: 0;
+}
+.line-left::before {
+  border-left-color: #fff;
+  left: 0;
+}
+
+.asterisk {
+  font-size: 2rem;
+  color: var(--secondary-color-font);
+  margin: 0 1.6rem;
+  opacity: 0;
+  animation: spin 2s forwards;
+  /* animation-delay: .7s; */
+}
+
+.headline__description h5 {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  letter-spacing: 3px;
+  margin-right: -3px;
+}
+
+.single-animation {
+  opacity: 0;
+  animation: fadeDown 0.5s forwards;
+  animation-delay: 1.6s;
+}
+
+.btn {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-right: -2px;
+}
+
+.cta-btn {
+  font-size: 1.2rem;
+  background-color: #fff;
+  padding: 1rem 2rem;
+  color: var(--secondary-color-font);
+  border-radius: 0.4rem;
+  transition: background-color 0.5s;
+}
+
+.cta-btn:hover,
+.cta-btn:focus {
+  color: #fff;
+  background-color: var(--secondary-color-font);
+}
+
+/* Discover story */
+
+.headline {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.discover-story .headline {
+  margin-top: 7rem;
+}
+
+.headline__asterisk {
+  margin: 2.4rem;
+}
+
+.headline__first--dark {
+  color: var(--main-font-color-dark);
+  letter-spacing: 0.7rem;
+  margin-right: -0.7rem;
+}
+
+.headline-description {
+  margin-bottom: 3rem;
+}
+
+.headline-description__paragraph {
+  line-height: 1.6;
+  margin-bottom: 2.4rem;
+}
+
+.global-btn {
+  font-size: 1.6rem;
+  color: var(--secondary-color-font);
+  position: relative;
+  transition: color 0.5s;
+  /* border-bottom: 2px solid var(--secondary-color-font); */
+}
+
+.global-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary-color-font);
+  transition: background-color 0.5s;
+}
+
+.global-btn:hover,
+.global-btn:focus {
+  color: var(--main-font-color-dark);
+}
+
+.global-btn:hover::before,
+.global-btn:focus::before {
+  background-color: var(--main-font-color-dark);
+}
+
+/* tasful recipes */
+.tasteful-resipes {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.9)
+    ),
+    url("img/sec-02.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.between {
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* discover-menu */
+
+.restaurant-info__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.restaurant-info .restaurant-info__description {
+  padding-top: 3rem;
+}
+
+/* perfect blend */
+.perfect-blend {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.9)
+    ),
+    url("img/sec-04.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* footer */
+.footer {
+  margin-top: 4rem;
+  padding: 8rem 0;
+  background-color: var(--main-font-color-dark);
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+.to-top {
+  width: 8rem;
+  height: 8rem;
+  background-color: var(--main-font-color-dark);
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+
+.to-top__arrow {
+  display: block;
+  padding: 3rem;
+  font-size: 2rem;
+  color: #fff;
+  animation: moveUp 2s infinite;
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+.footer-heading {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 3px;
+  margin-right: -3px;
+  margin-bottom: 3rem;
+}
+
+.footer-content__about {
+  margin-bottom: 5rem;
+}
+
+.footer-content__about .asterisk {
+  margin: 3rem 0;
+}
+
+.footer-paragraph {
+  line-height: 2;
+}
+
+.socials {
+  list-style: none;
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.socials__icon {
+  font-size: 2rem;
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  color: #fff;
+  transition: color 0.5s;
+}
+
+.socials__icon:hover,
+.socials__icon:focus {
+  color: var(--secondary-color-font);
+}
+
+.newsletter-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.newsletter-form__input {
+  width: 100%;
+  max-width: 30rem;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  border: none;
+}
+
+.newsletter-form__input::placeholder {
+  font-family: var(--main-font);
+}
+
+.newsletter-form__btn {
+  background-color: transparent;
+  border: none;
+  color: var(--main-font-color-dark);
+  cursor: pointer;
+  font-size: 1.6rem;
+  padding: 1rem 0.6rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 13rem;
+}
+
+/* @media */
+
+@media (min-width: 900px) {
+  .restaurant-info__description {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
+
+  .restaurant-info-img {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .restaurant-info__images {
+    height: 100%;
+  }
+
+  .restaurant-info__img {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .discover-menu .restaurant-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
+
+  .discover-menu .restaurant-info__description {
+    display: initial;
+  }
+}
+
+@media (max-width: 600px) {
+  .discover-menu .restaurant-info__images,
+  .culinary-delight .restaurant-info__images {
+    grid-template-columns: 1fr;
+  }
+
+  /* .culinary-delight .restaurant-info__images {
+
+  } */
+}
+
+/* animations */
+@keyframes fadeUp {
+  0% {
+    transform: translateY(5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
+@keyframes fadeDown {
+  0% {
+    transform: translateY(-5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
+@keyframes scaleDown {
+  0% {
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+}
+@keyframes moveUp {
+  0% {
+  }
+  /* 25% {
+    transform: translateY(-0.5rem);
+  } */
+  50% {
+    transform: translateY(0.7rem);
+  }
+  /* 75% {
+    transform: translateY(-0.5rem);
+  } */
+  100% {
+    transform: translateY(0rem);
+  }
+}
