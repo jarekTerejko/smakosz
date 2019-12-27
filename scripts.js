@@ -33,3 +33,14 @@ menuToggle.addEventListener("click", ()=> {
     
     navList.classList.toggle("open")
 })
+
+window.addEventListener("resize", ()=> {
+    if(window.innerWidth >= 900 && bars.classList.contains("fa-times") ) {
+        console.log(123)
+        bars.classList.remove("fa-times")
+        bars.classList.add("fa-bars")
+    
+    
+    navList.classList.toggle("open")
+    }
+})
